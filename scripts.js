@@ -19,6 +19,11 @@ function initiateCalculator() {
 		const buttonBackspace = document.querySelector('.key_backspace');
 		const buttonClear = document.querySelector('.key_clear');
 
+		const buttonAddition = document.querySelector('.key_addition');
+		const buttonSubtraction = document.querySelector('.key_substraction');
+		const buttonMultiplication = document.querySelector('.key_multiplication');
+		const buttonDivision = document.querySelector('.key_division');
+
 	// 	let buttonVariedVariables = [
 	// 		button0,
 	// 		button1,
@@ -109,6 +114,30 @@ function initiateCalculator() {
 
 		button9.addEventListener('click', () => {
 			displayValue.push(9);
+			console.log(displayValue);
+			return display.textContent = displayValue.join('');
+		});
+
+		buttonAddition.addEventListener('click', () => {
+			displayValue.push(' + ');
+			console.log(displayValue);
+			return display.textContent = displayValue.join('');
+		});
+
+		buttonSubtraction.addEventListener('click', () => {
+			displayValue.push(' - ');
+			console.log(displayValue);
+			return display.textContent = displayValue.join('');
+		});
+
+		buttonMultiplication.addEventListener('click', () => {
+			displayValue.push(' x ');
+			console.log(displayValue);
+			return display.textContent = displayValue.join('');
+		});
+
+		buttonDivision.addEventListener('click', () => {
+			displayValue.push(' / ');
 			console.log(displayValue);
 			return display.textContent = displayValue.join('');
 		});
