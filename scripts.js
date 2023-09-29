@@ -16,6 +16,9 @@ function initiateCalculator() {
 		const button8 = document.querySelector('.key_8');
 		const button9 = document.querySelector('.key_9');
 
+		const buttonBackspace = document.querySelector('.key_backspace');
+		const buttonClear = document.querySelector('.key_clear');
+
 	// 	let buttonVariedVariables = [
 	// 		button0,
 	// 		button1,
@@ -106,6 +109,18 @@ function initiateCalculator() {
 
 		button9.addEventListener('click', () => {
 			displayValue.push(9);
+			console.log(displayValue);
+			return display.textContent = displayValue.join('');
+		});
+
+		buttonBackspace.addEventListener('click', ()=> {
+			displayValue.pop();
+			console.log(displayValue);
+			return display.textContent = displayValue.join('');
+		});
+
+		buttonClear.addEventListener('click', ()=> {
+			displayValue.splice(0,displayValue.length);
 			console.log(displayValue);
 			return display.textContent = displayValue.join('');
 		});
