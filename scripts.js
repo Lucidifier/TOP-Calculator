@@ -56,52 +56,58 @@ function initiateCalculator() {
 			return display.textContent = displayValue.join('');
 		});
 
+		// button2.addEventListener('click', () => {
+		// 	const button2Value = '2';
+		// 	displayValue += button2Value;
+		// 	return display.textContent = displayValue;
+		// });
+
 		button2.addEventListener('click', () => {
-			const button2Value = '2';
-			displayValue += button2Value;
-			return display.textContent = displayValue;
+			displayValue.push(2);
+			console.log(displayValue);
+			return display.textContent = displayValue.join('');
 		});
 
 		button3.addEventListener('click', () => {
-			const button3Value = '3';
-			displayValue += button3Value;
-			return display.textContent = displayValue;
+			displayValue.push(3);
+			console.log(displayValue);
+			return display.textContent = displayValue.join('');
 		});
 
 		button4.addEventListener('click', () => {
-			const button4Value = '4';
-			displayValue += button4Value;
-			return display.textContent = displayValue;
+			displayValue.push(4);
+			console.log(displayValue);
+			return display.textContent = displayValue.join('');
 		});
 
 		button5.addEventListener('click', () => {
-			const button5Value = '5';
-			displayValue += button5Value;
-			return display.textContent = displayValue;
+			displayValue.push(5);
+			console.log(displayValue);
+			return display.textContent = displayValue.join('');
 		});
 
 		button6.addEventListener('click', () => {
-			const button6Value = '6';
-			displayValue += button6Value;
-			return display.textContent = displayValue;
+			displayValue.push(6);
+			console.log(displayValue);
+			return display.textContent = displayValue.join('');
 		});
 
 		button7.addEventListener('click', () => {
-			const button7Value = '7';
-			displayValue += button7Value;
-			return display.textContent = displayValue;
+			displayValue.push(7);
+			console.log(displayValue);
+			return display.textContent = displayValue.join('');
 		});
 
 		button8.addEventListener('click', () => {
-			const button8Value = '8';
-			displayValue += button8Value;
-			return display.textContent = displayValue;
+			displayValue.push(8);
+			console.log(displayValue);
+			return display.textContent = displayValue.join('');
 		});
 
 		button9.addEventListener('click', () => {
-			const button9Value = '9';
-			displayValue += button9Value;
-			return display.textContent = displayValue;
+			displayValue.push(9);
+			console.log(displayValue);
+			return display.textContent = displayValue.join('');
 		});
 
   }
