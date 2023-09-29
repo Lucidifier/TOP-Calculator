@@ -18,6 +18,7 @@ function initiateCalculator() {
 
 		const buttonBackspace = document.querySelector('.key_backspace');
 		const buttonClear = document.querySelector('.key_clear');
+		const buttonFloating = document.querySelector('.key_floating');
 
 		const buttonAddition = document.querySelector('.key_addition');
 		const buttonSubtraction = document.querySelector('.key_substraction');
@@ -138,6 +139,12 @@ function initiateCalculator() {
 
 		buttonDivision.addEventListener('click', () => {
 			displayValue.push(' / ');
+			console.log(displayValue);
+			return display.textContent = displayValue.join('');
+		});
+
+		buttonFloating.addEventListener('click', () => {
+			displayValue.push('.');
 			console.log(displayValue);
 			return display.textContent = displayValue.join('');
 		});
