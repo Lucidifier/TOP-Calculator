@@ -55,24 +55,27 @@ function initiateCalculator() {
 
 		function operate() {
 			console.log(displayValue);
-			switch (displayValue[1]) {
-				case ' + ':
-					calculationValue = +displayValue[0] + +displayValue[2];
+			let separatedDisplayValue = displayValue.join('').split(' ');
+			console.log(separatedDisplayValue);
+			switch (separatedDisplayValue[1]) {
+				case '+':
+					calculationValue = +separatedDisplayValue[0] + +separatedDisplayValue[2];
+					console.log(displayValue);
 					console.log(calculationValue);
 					display.textContent = calculationValue;
 					break;
-				case ' - ':
-					calculationValue = +displayValue[0] - +displayValue[2];
+				case '-':
+					calculationValue = +separatedDisplayValue[0] - +separatedDisplayValue[2];
 					console.log(calculationValue);
 					display.textContent = calculationValue;
 					break;
-				case ' * ':
-					calculationValue = +displayValue[0] * +displayValue[2];
+				case '*':
+					calculationValue = +separatedDisplayValue[0] * +separatedDisplayValue[2];
 					console.log(calculationValue);
 					display.textContent = calculationValue;
 					break;
-				case ' / ':
-					calculationValue = +displayValue[0] / +displayValue[2];
+				case '/':
+					calculationValue = +separatedDisplayValue[0] / +separatedDisplayValue[2];
 					console.log(calculationValue);
 					display.textContent = calculationValue;
 					break;
@@ -154,9 +157,11 @@ function initiateCalculator() {
 		});
 
 		buttonAddition.addEventListener('click', () => {
-			if (displayValue[1] === ' + ' ) {
+			if (displayValue.join('').split(' ')[1] !== undefined ) {
 				operate();
-				displayValue.splice(0,3,calculationValue, ' + ');
+				console.log(calculationValue);
+				console.log(displayValue);
+				displayValue.splice(0,displayValue.length,calculationValue, ' + ');
 				console.log(calculationValue);
 				console.log(displayValue);
 			return display.textContent = displayValue.join('');
@@ -169,9 +174,9 @@ function initiateCalculator() {
 		});
 
 		buttonSubtraction.addEventListener('click', () => {
-			if (displayValue[1] === ' - ' ) {
+			if (displayValue[1] !== undefined ) {
 				operate();
-				displayValue.splice(0,3,calculationValue, ' - ');
+				displayValue.splice(0,displayValue.length,calculationValue, ' - ');
 				console.log(calculationValue);
 				console.log(displayValue);
 			return display.textContent = displayValue.join('');
@@ -184,9 +189,9 @@ function initiateCalculator() {
 		});
 
 		buttonMultiplication.addEventListener('click', () => {
-			if (displayValue[1] === ' * ' ) {
+			if (displayValue[1] !== undefined ) {
 				operate();
-				displayValue.splice(0,3,calculationValue, ' * ');
+				displayValue.splice(0,displayValue.length,calculationValue, ' * ');
 				console.log(calculationValue);
 				console.log(displayValue);
 			return display.textContent = displayValue.join('');
@@ -199,9 +204,9 @@ function initiateCalculator() {
 		});
 
 		buttonDivision.addEventListener('click', () => {
-			if (displayValue[1] === ' / ' ) {
+			if (displayValue[1] !== undefined ) {
 				operate();
-				displayValue.splice(0,3,calculationValue, ' / ');
+				displayValue.splice(0,displayValue.length,calculationValue, ' / ');
 				
 				console.log(calculationValue);
 				console.log(displayValue);
