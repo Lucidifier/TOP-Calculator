@@ -75,10 +75,17 @@ function initiateCalculator() {
 					display.textContent = calculationValue;
 					break;
 				case '/':
+					if (+separatedDisplayValue[2] == 0) {
+						displayValue.splice(0,displayValue.length);
+						console.log(displayValue);
+						display.textContent = displayValue.join('');
+						break;
+					} else {
 					calculationValue = +separatedDisplayValue[0] / +separatedDisplayValue[2];
 					console.log(calculationValue);
 					display.textContent = calculationValue;
 					break;
+					};
 				default:
 					console.log('error');
 			};
