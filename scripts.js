@@ -3,7 +3,9 @@ function initiateCalculator() {
 			//CREATE DOM NODES
 			const display = document.querySelector('.display');
 			let displayValue = [];
+			console.log(displayValue);
 			let calculationValue = [];
+			let separatedDisplayValue = [];
 		
 			const button0 = document.querySelector('.key_0');
 			const button1 = document.querySelector('.key_1');
@@ -55,7 +57,7 @@ function initiateCalculator() {
 
 		function operate() {
 			console.log(displayValue);
-			let separatedDisplayValue = displayValue.join('').split(' ');
+			separatedDisplayValue = displayValue.join('').split(' ');
 			console.log(separatedDisplayValue);
 			switch (separatedDisplayValue[1]) {
 				case '+':
@@ -70,22 +72,35 @@ function initiateCalculator() {
 					display.textContent = calculationValue;
 					break;
 				case '*':
-					calculationValue = +separatedDisplayValue[0] * +separatedDisplayValue[2];
-					console.log(calculationValue);
-					display.textContent = calculationValue;
-					break;
-				case '/':
-					if (+separatedDisplayValue[2] == 0) {
+					if ((separatedDisplayValue[0] === '' || separatedDisplayValue[2] === '') || (isNaN(separatedDisplayValue[0]) || isNaN(separatedDisplayValue[2]))) {
 						displayValue.splice(0,displayValue.length);
 						console.log(displayValue);
 						display.textContent = displayValue.join('');
 						break;
 					} else {
-					calculationValue = +separatedDisplayValue[0] / +separatedDisplayValue[2];
+					calculationValue = +separatedDisplayValue[0] * +separatedDisplayValue[2];
 					console.log(calculationValue);
 					display.textContent = calculationValue;
 					break;
 					};
+				case '/':
+					if (separatedDisplayValue[0] === '' || separatedDisplayValue[2] === '') {
+						displayValue.splice(0,displayValue.length);
+						console.log(displayValue);
+						display.textContent = displayValue.join('');
+						break;
+					} else {
+						if (+separatedDisplayValue[2] == 0) {
+							displayValue.splice(0,displayValue.length);
+							console.log(displayValue);
+							display.textContent = displayValue.join('');
+							break;
+						} else {
+						calculationValue = +separatedDisplayValue[0] / +separatedDisplayValue[2];
+						console.log(calculationValue);
+						display.textContent = calculationValue;
+						break;
+						}};
 				default:
 					console.log('error');
 			};
@@ -164,7 +179,7 @@ function initiateCalculator() {
 		});
 
 		buttonAddition.addEventListener('click', () => {
-			if (displayValue.join('').split(' ')[1] !== undefined ) {
+			if (displayValue.join('').split(' ')[1] !== undefined) {
 				operate();
 				console.log(calculationValue);
 				console.log(displayValue);
@@ -181,7 +196,7 @@ function initiateCalculator() {
 		});
 
 		buttonSubtraction.addEventListener('click', () => {
-			if (displayValue[1] !== undefined ) {
+			if (displayValue.join('').split(' ')[1] !== undefined) {
 				operate();
 				displayValue.splice(0,displayValue.length,calculationValue, ' - ');
 				console.log(calculationValue);
@@ -196,34 +211,44 @@ function initiateCalculator() {
 		});
 
 		buttonMultiplication.addEventListener('click', () => {
-			if (displayValue[1] !== undefined ) {
-				operate();
-				displayValue.splice(0,displayValue.length,calculationValue, ' * ');
-				console.log(calculationValue);
+			if (displayValue.length == 0) {
 				console.log(displayValue);
-			return display.textContent = displayValue.join('');
-			
+				return display.textContent = displayValue;
 			} else {
-			displayValue.push(' * ');
-			console.log(displayValue);
-			return display.textContent = displayValue.join('');
-			}
+				if (displayValue.join('').split(' ')[1] !== undefined) {
+					operate();
+					displayValue.splice(0,displayValue.length,calculationValue, ' * ');
+					console.log(calculationValue);
+					console.log(displayValue);
+					return display.textContent = displayValue.join('');
+			
+				} else {
+					displayValue.push(' * ');
+					console.log(displayValue);
+					return display.textContent = displayValue.join('');
+				}
+			};
 		});
 
 		buttonDivision.addEventListener('click', () => {
-			if (displayValue[1] !== undefined ) {
-				operate();
-				displayValue.splice(0,displayValue.length,calculationValue, ' / ');
-				
-				console.log(calculationValue);
+			if (displayValue.length == 0) {
 				console.log(displayValue);
-			return display.textContent = displayValue.join('');
-			
+				return display.textContent = displayValue;
 			} else {
-			displayValue.push(' / ');
-			console.log(displayValue);
-			return display.textContent = displayValue.join('');
-			}
+					if (displayValue.join('').split(' ')[1] !== undefined) {
+						operate();
+						displayValue.splice(0,displayValue.length,calculationValue, ' / ');
+				
+						console.log(calculationValue);
+						console.log(displayValue);
+						return display.textContent = displayValue.join('');
+			
+					} else {
+						displayValue.push(' / ');
+						console.log(displayValue);
+						return display.textContent = displayValue.join('');
+					}
+			};
 		});
 
 		buttonFloating.addEventListener('click', () => {
