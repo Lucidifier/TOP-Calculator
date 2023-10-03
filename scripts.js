@@ -230,14 +230,37 @@ function initiateCalculator() {
 		});
 
 		buttonFloating.addEventListener('click', () => {
+			console.log(displayValue.join('').split(' '));
 			if (displayValue.length == 0) {
 				return display.textContent = displayValue;
+			} else if (displayValue.join('').split(' ')[2] == '') {
+				console.log(1);
+				return display.textContent = displayValue.join('');
+			} else if (displayValue.join('').split(' ').length == 1) {
+				if (displayValue.join('').includes('.')) {
+					console.log(2);
+					return display.textContent = displayValue.join('');
+				} else {
+					displayValue.push('.');
+					console.log(3);
+					console.log(displayValue);
+					return display.textContent = displayValue.join('');
+				};
 			} else {
-			displayValue.push('.');
-			return display.textContent = displayValue.join('');
+				let slicedDisplayValue = displayValue.slice(2);
+				if (slicedDisplayValue.join('').includes('.')) {
+						console.log(4);
+						return display.textContent = displayValue.join('');
+				} else {
+					displayValue.push('.');
+					console.log(5);
+					console.log(displayValue);
+					return display.textContent = displayValue.join('');
+				};
 			};
-		});
-
+		}
+		);
+	
 		buttonBackspace.addEventListener('click', ()=> {
 			displayValue.pop();
 			return display.textContent = displayValue.join('');
