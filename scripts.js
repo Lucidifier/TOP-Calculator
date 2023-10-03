@@ -248,7 +248,16 @@ function initiateCalculator() {
 			return display.textContent = displayValue.join('');
 		});
 
-		buttonEquals.addEventListener('click', operate);
+		buttonEquals.addEventListener('click', () => {
+			if (displayValue.join('').split(' ')[2] == '') {
+				return display.textContent = displayValue.join('');
+			} else if (displayValue.join('').split(' ').length == 1) {
+				return display.textContent = displayValue.join('');
+			}
+			 else {
+				operate();
+			}
+		});
   }
 	showOnDisplay();
 }
