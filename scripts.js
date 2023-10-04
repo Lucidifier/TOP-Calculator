@@ -369,6 +369,91 @@ function initiateCalculator() {
 				} else {
 						return display.textContent = displayValue.join('');
 				};
+			case 'NumpadAdd':
+				if (displayValue.length == 0) {
+					return display.textContent = displayValue;
+				} else {
+				if (displayValue.join('').split(' ')[1] !== undefined) {
+					operate();
+					displayValue.splice(0,displayValue.length,calculationValue, ' + ');
+				return display.textContent = displayValue.join('');
+				} else {
+				displayValue.push(' + ');
+				return display.textContent = displayValue.join('');
+				}
+			};
+			case 'NumpadSubtract':
+				if (displayValue.join('').split(' ')[1] !== undefined) {
+					operate();
+					displayValue.splice(0,displayValue.length,calculationValue, ' - ');
+				return display.textContent = displayValue.join('');
+				} else {
+				displayValue.push(' - ');
+				return display.textContent = displayValue.join('');
+				};
+			case 'NumpadMultiply':
+				if (displayValue.length == 0) {
+					return display.textContent = displayValue;
+				} else {
+					if (displayValue.join('').split(' ')[1] !== undefined) {
+						operate();
+						displayValue.splice(0,displayValue.length,calculationValue, ' * ');
+						return display.textContent = displayValue.join('');
+					} else {
+						displayValue.push(' * ');
+						return display.textContent = displayValue.join('');
+					};
+				};
+			case 'NumpadDivide':
+				if (displayValue.length == 0) {
+					return display.textContent = displayValue;
+				} else {
+						if (displayValue.join('').split(' ')[1] !== undefined) {
+							operate();
+							displayValue.splice(0,displayValue.length,calculationValue, ' / ');
+							return display.textContent = displayValue.join('');
+						} else {
+							displayValue.push(' / ');
+							return display.textContent = displayValue.join('');
+						}
+				};
+			case 'NumpadDecimal':
+				if (displayValue.length == 0) {
+					return display.textContent = displayValue;
+				} else if (displayValue.join('').split(' ')[2] == '') {
+					console.log(1);
+					return display.textContent = displayValue.join('');
+				} else if (displayValue.join('').split(' ').length == 1) {
+					if (displayValue.join('').includes('.')) {
+						console.log(2);
+						return display.textContent = displayValue.join('');
+					} else {
+						displayValue.push('.');
+						console.log(3);
+						console.log(displayValue);
+						return display.textContent = displayValue.join('');
+					};
+				} else {
+					let slicedDisplayValue = displayValue.slice(2);
+					if (slicedDisplayValue.join('').includes('.')) {
+							console.log(4);
+							return display.textContent = displayValue.join('');
+					} else {
+						displayValue.push('.');
+						console.log(5);
+						console.log(displayValue);
+						return display.textContent = displayValue.join('');
+					};
+				};
+			case 'NumpadEnter':
+				if (displayValue.join('').split(' ')[2] == '') {
+					return display.textContent = displayValue.join('');
+				} else if (displayValue.join('').split(' ').length == 1) {
+					return display.textContent = displayValue.join('');
+				}
+				 else {
+					operate();
+				};
 		};
 	});
   };
