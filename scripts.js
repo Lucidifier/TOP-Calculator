@@ -106,10 +106,13 @@ function initiateCalculator() {
 	function showOnDisplay() {
 
 		button0.addEventListener('click', () => {
-			// const button0Value = '0';
+			if (displayValue.length < 15) {
 			displayValue.push(0);
 			console.log(displayValue);
 			return display.textContent = displayValue.join('');
+			} else {
+				return display.textContent = displayValue.join('');
+			};
 		});
 
 		button1.addEventListener('click', () => {
@@ -282,7 +285,96 @@ function initiateCalculator() {
 			}
 		});
   }
+
+  function keyboardSupport () {
+	document.addEventListener('keydown', (e) => {
+		switch (e.code) {
+			case 'Numpad0':
+				if (displayValue.length < 20) {
+					displayValue.push(0);
+					console.log(displayValue);
+					return display.textContent = displayValue.join('');
+				} else {
+						return display.textContent = displayValue.join('');
+				};
+			case 'Numpad1':
+				if (displayValue.length < 20) {
+					displayValue.push(1);
+					console.log(displayValue);
+					return display.textContent = displayValue.join('');
+				} else {
+						return display.textContent = displayValue.join('');
+				};
+			case 'Numpad2':
+				if (displayValue.length < 20) {
+					displayValue.push(2);
+					console.log(displayValue);
+					return display.textContent = displayValue.join('');
+				} else {
+						return display.textContent = displayValue.join('');
+				};
+			case 'Numpad3':
+				if (displayValue.length < 20) {
+					displayValue.push(3);
+					console.log(displayValue);
+					return display.textContent = displayValue.join('');
+				} else {
+						return display.textContent = displayValue.join('');
+				};
+			case 'Numpad4':
+				if (displayValue.length < 20) {
+					displayValue.push(4);
+					console.log(displayValue);
+					return display.textContent = displayValue.join('');
+				} else {
+						return display.textContent = displayValue.join('');
+				};
+			case 'Numpad5':
+				if (displayValue.length < 20) {
+					displayValue.push(5);
+					console.log(displayValue);
+					return display.textContent = displayValue.join('');
+				} else {
+						return display.textContent = displayValue.join('');
+				};
+			case 'Numpad6':
+				if (displayValue.length < 20) {
+					displayValue.push(6);
+					console.log(displayValue);
+					return display.textContent = displayValue.join('');
+				} else {
+						return display.textContent = displayValue.join('');
+				};
+			case 'Numpad7':
+				if (displayValue.length < 20) {
+					displayValue.push(7);
+					console.log(displayValue);
+					return display.textContent = displayValue.join('');
+				} else {
+						return display.textContent = displayValue.join('');
+				};
+			case 'Numpad8':
+				if (displayValue.length < 20) {
+					displayValue.push(8);
+					console.log(displayValue);
+					return display.textContent = displayValue.join('');
+				} else {
+						return display.textContent = displayValue.join('');
+				};
+			case 'Numpad9':
+				if (displayValue.length < 20) {
+					displayValue.push(9);
+					console.log(displayValue);
+					return display.textContent = displayValue.join('');
+				} else {
+						return display.textContent = displayValue.join('');
+				};
+		};
+	});
+  };
+
 	showOnDisplay();
-}
+	keyboardSupport();
+};
 
 initiateCalculator();
