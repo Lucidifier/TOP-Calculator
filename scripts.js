@@ -5,6 +5,7 @@ function initiateCalculator() {
 			let displayValue = [];
 			let calculationValue = [];
 			let separatedDisplayValue = [];
+			let numLockCounter = 2;
 		
 			const button0 = document.querySelector('.key_0');
 			const button1 = document.querySelector('.key_1');
@@ -286,8 +287,10 @@ function initiateCalculator() {
 		});
   }
 
-  function keyboardSupport () {
-	document.addEventListener('keydown', (e) => {
+
+	// KEYBOARD SUPPORT VALUES 
+
+	function keydownChecker (e) {
 		switch (e.code) {
 			case 'Numpad0':
 				if (displayValue.length < 20) {
@@ -455,11 +458,24 @@ function initiateCalculator() {
 					operate();
 				};
 		};
-	});
-  };
+	}
 
+	// ENABLE/ DISABLE KEYBOARD SUPPORT
+	document.addEventListener('keydown', (n) => {
+		if (n.code === 'NumLock') {
+			
+			numLockCounter ++;
+			console.log(numLockCounter);
+			if (numLockCounter % 2 == 0) {
+				document. removeEventListener ('keydown', keydownChecker);
+				console.log(1);
+			} else {
+				document.addEventListener('keydown', keydownChecker);
+				console.log(2);
+			};
+		}
+	});
 	showOnDisplay();
-	keyboardSupport();
 };
 
 initiateCalculator();
