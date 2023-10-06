@@ -101,15 +101,8 @@ function initiateCalculator() {
 				default:
 					console.log('error');
 			};
-			// if (separatedDisplayValue[1] == '+') {
-			// 	return display.textContent = +separatedDisplayValue[0] + +separatedDisplayValue[2];
-			// }
 		};
-  
 
-	// SHOW ON DISPLAY
-
-	function showOnDisplay() {
 
 		//BUTTON FUNCTIONS
 
@@ -123,9 +116,6 @@ function initiateCalculator() {
 				};
 		};
 
-		button0.addEventListener('click', button0Functionality);
-
-		
 		function button1Functionality() {
 			if (displayValue.length < 15) {
 				displayValue.push(1);
@@ -133,10 +123,7 @@ function initiateCalculator() {
 				return display.textContent = displayValue.join('');
 				}
 		};
-
-		button1.addEventListener('click', button1Functionality);
-
-		
+  
 		function button2Functionality() {
 			if (displayValue.length < 15) {
 				displayValue.push(2);
@@ -144,9 +131,6 @@ function initiateCalculator() {
 				return display.textContent = displayValue.join('');
 				}
 		};
-
-		button2.addEventListener('click', button2Functionality);
-		
 
 		function button3Functionality() {
 			if (displayValue.length < 15) {
@@ -156,9 +140,6 @@ function initiateCalculator() {
 				}
 		};
 
-		button3.addEventListener('click', button3Functionality);
-
-		
 		function button4Functionality() {
 			if (displayValue.length < 15) {
 				displayValue.push(4);
@@ -167,9 +148,6 @@ function initiateCalculator() {
 				}
 		};
 
-		button4.addEventListener('click', button4Functionality);
-
-		
 		function button5Functionality() {
 			if (displayValue.length < 15) {
 				displayValue.push(5);
@@ -178,9 +156,6 @@ function initiateCalculator() {
 				}
 		};
 
-		button5.addEventListener('click', button5Functionality);
-
-		
 		function button6Functionality() {
 			if (displayValue.length < 15) {
 				displayValue.push(6);
@@ -189,8 +164,6 @@ function initiateCalculator() {
 				}
 		};
 
-		button6.addEventListener('click', button6Functionality);
-		
 		function button7Functionality() {
 			if (displayValue.length < 15) {
 				displayValue.push(7);
@@ -199,8 +172,6 @@ function initiateCalculator() {
 				}
 		};
 
-		button7.addEventListener('click', button7Functionality);
-		
 		function button8Functionality() {
 			if (displayValue.length < 15) {
 				displayValue.push(8);
@@ -209,8 +180,6 @@ function initiateCalculator() {
 				}
 		};
 
-		button8.addEventListener('click', button8Functionality);
-		
 		function button9Functionality() {
 			if (displayValue.length < 15) {
 				displayValue.push(9);
@@ -219,29 +188,7 @@ function initiateCalculator() {
 				}
 		};
 
-		button9.addEventListener('click', button9Functionality);
-
-		
-
-		
-
-		
-
-	
-
-		
-
-		
-
-		
-
-		
-
-		
-
-	
-
-		buttonAddition.addEventListener('click', () => {
+		function buttonAdditionFunctionality() {
 			if (displayValue.length == 0) {
 				return display.textContent = displayValue;
 			} else {
@@ -252,23 +199,22 @@ function initiateCalculator() {
 			} else {
 			displayValue.push(' + ');
 			return display.textContent = displayValue.join('');
-			}
+			};
 		};
-		});
+		};
 
-		buttonSubtraction.addEventListener('click', () => {
+		function buttonSubtractionFunctionality() {
 			if (displayValue.join('').split(' ')[1] !== undefined) {
 				operate();
 				displayValue.splice(0,displayValue.length,calculationValue, ' - ');
 			return display.textContent = displayValue.join('');
-			
 			} else {
 			displayValue.push(' - ');
 			return display.textContent = displayValue.join('');
 			};
-		});
+		};
 
-		buttonMultiplication.addEventListener('click', () => {
+		function buttonMultiplicationFunctionality() {
 			if (displayValue.length == 0) {
 				return display.textContent = displayValue;
 			} else {
@@ -281,9 +227,9 @@ function initiateCalculator() {
 					return display.textContent = displayValue.join('');
 				};
 			};
-		});
+		};
 
-		buttonDivision.addEventListener('click', () => {
+		function buttonDivisionFunctionality() {
 			if (displayValue.length == 0) {
 				return display.textContent = displayValue;
 			} else {
@@ -296,9 +242,9 @@ function initiateCalculator() {
 						return display.textContent = displayValue.join('');
 					}
 			};
-		});
+		};
 
-		buttonFloating.addEventListener('click', () => {
+		function buttonFloatingFunctionality() {
 			console.log(displayValue.join('').split(' '));
 			if (displayValue.length == 0) {
 				return display.textContent = displayValue;
@@ -327,20 +273,19 @@ function initiateCalculator() {
 					return display.textContent = displayValue.join('');
 				};
 			};
-		}
-		);
-	
-		buttonBackspace.addEventListener('click', ()=> {
+		};
+
+		function buttonBackspaceFunctionality() {
 			displayValue.pop();
 			return display.textContent = displayValue.join('');
-		});
+		};
 
-		buttonClear.addEventListener('click', ()=> {
+		function buttonClearFunctionality() {
 			displayValue.splice(0,displayValue.length);
 			return display.textContent = displayValue.join('');
-		});
+		};
 
-		buttonEquals.addEventListener('click', () => {
+		function buttonEqualsFunctionality() {
 			if (displayValue.join('').split(' ')[2] == '') {
 				return display.textContent = displayValue.join('');
 			} else if (displayValue.join('').split(' ').length == 1) {
@@ -348,9 +293,32 @@ function initiateCalculator() {
 			}
 			 else {
 				operate();
-			}
-		});
-  }
+			};
+		};
+
+
+	// SHOW ON DISPLAY
+
+	function showOnDisplay() {
+		button0.addEventListener('click', button0Functionality);
+		button1.addEventListener('click', button1Functionality);
+		button2.addEventListener('click', button2Functionality);
+		button3.addEventListener('click', button3Functionality);
+		button4.addEventListener('click', button4Functionality);
+		button5.addEventListener('click', button5Functionality);
+		button6.addEventListener('click', button6Functionality);
+		button7.addEventListener('click', button7Functionality);
+		button8.addEventListener('click', button8Functionality);
+		button9.addEventListener('click', button9Functionality);
+		buttonAddition.addEventListener('click', buttonAdditionFunctionality);
+		buttonSubtraction.addEventListener('click', buttonSubtractionFunctionality);
+		buttonMultiplication.addEventListener('click', buttonMultiplicationFunctionality);
+		buttonDivision.addEventListener('click', buttonDivisionFunctionality);
+		buttonFloating.addEventListener('click', buttonFloatingFunctionality);
+		buttonBackspace.addEventListener('click', buttonBackspaceFunctionality);
+		buttonClear.addEventListener('click', buttonClearFunctionality);
+		buttonEquals.addEventListener('click', buttonEqualsFunctionality);
+  };
 
 
 	// KEYBOARD SUPPORT VALUES 
@@ -358,172 +326,55 @@ function initiateCalculator() {
 	function keydownChecker (e) {
 		switch (e.code) {
 			case 'Numpad0':
-				if (displayValue.length < 20) {
-					displayValue.push(0);
-					console.log(displayValue);
-					return display.textContent = displayValue.join('');
-				} else {
-						return display.textContent = displayValue.join('');
-				};
+				button0Functionality();
+				break;
 			case 'Numpad1':
-				if (displayValue.length < 20) {
-					displayValue.push(1);
-					console.log(displayValue);
-					return display.textContent = displayValue.join('');
-				} else {
-						return display.textContent = displayValue.join('');
-				};
+				button1Functionality();
+				break;
 			case 'Numpad2':
-				if (displayValue.length < 20) {
-					displayValue.push(2);
-					console.log(displayValue);
-					return display.textContent = displayValue.join('');
-				} else {
-						return display.textContent = displayValue.join('');
-				};
+				button2Functionality();
+				break;
 			case 'Numpad3':
-				if (displayValue.length < 20) {
-					displayValue.push(3);
-					console.log(displayValue);
-					return display.textContent = displayValue.join('');
-				} else {
-						return display.textContent = displayValue.join('');
-				};
+				button3Functionality();
+				break;
 			case 'Numpad4':
-				if (displayValue.length < 20) {
-					displayValue.push(4);
-					console.log(displayValue);
-					return display.textContent = displayValue.join('');
-				} else {
-						return display.textContent = displayValue.join('');
-				};
+				button4Functionality();
+				break;
 			case 'Numpad5':
-				if (displayValue.length < 20) {
-					displayValue.push(5);
-					console.log(displayValue);
-					return display.textContent = displayValue.join('');
-				} else {
-						return display.textContent = displayValue.join('');
-				};
+				button5Functionality();
+				break;
 			case 'Numpad6':
-				if (displayValue.length < 20) {
-					displayValue.push(6);
-					console.log(displayValue);
-					return display.textContent = displayValue.join('');
-				} else {
-						return display.textContent = displayValue.join('');
-				};
+				button6Functionality();
+				break;
 			case 'Numpad7':
-				if (displayValue.length < 20) {
-					displayValue.push(7);
-					console.log(displayValue);
-					return display.textContent = displayValue.join('');
-				} else {
-						return display.textContent = displayValue.join('');
-				};
+				button7Functionality();
+				break;
 			case 'Numpad8':
-				if (displayValue.length < 20) {
-					displayValue.push(8);
-					console.log(displayValue);
-					return display.textContent = displayValue.join('');
-				} else {
-						return display.textContent = displayValue.join('');
-				};
+				button8Functionality();
+				break;
 			case 'Numpad9':
-				if (displayValue.length < 20) {
-					displayValue.push(9);
-					console.log(displayValue);
-					return display.textContent = displayValue.join('');
-				} else {
-						return display.textContent = displayValue.join('');
-				};
+				button9Functionality();
+				break;
 			case 'NumpadAdd':
-				if (displayValue.length == 0) {
-					return display.textContent = displayValue;
-				} else {
-				if (displayValue.join('').split(' ')[1] !== undefined) {
-					operate();
-					displayValue.splice(0,displayValue.length,calculationValue, ' + ');
-				return display.textContent = displayValue.join('');
-				} else {
-				displayValue.push(' + ');
-				return display.textContent = displayValue.join('');
-				}
-			};
+				buttonAdditionFunctionality();
+				break;
 			case 'NumpadSubtract':
-				if (displayValue.join('').split(' ')[1] !== undefined) {
-					operate();
-					displayValue.splice(0,displayValue.length,calculationValue, ' - ');
-				return display.textContent = displayValue.join('');
-				} else {
-				displayValue.push(' - ');
-				return display.textContent = displayValue.join('');
-				};
+				buttonSubtractionFunctionality();
+				break;
 			case 'NumpadMultiply':
-				if (displayValue.length == 0) {
-					return display.textContent = displayValue;
-				} else {
-					if (displayValue.join('').split(' ')[1] !== undefined) {
-						operate();
-						displayValue.splice(0,displayValue.length,calculationValue, ' * ');
-						return display.textContent = displayValue.join('');
-					} else {
-						displayValue.push(' * ');
-						return display.textContent = displayValue.join('');
-					};
-				};
+				buttonMultiplicationFunctionality();
+				break;
 			case 'NumpadDivide':
-				if (displayValue.length == 0) {
-					return display.textContent = displayValue;
-				} else {
-						if (displayValue.join('').split(' ')[1] !== undefined) {
-							operate();
-							displayValue.splice(0,displayValue.length,calculationValue, ' / ');
-							return display.textContent = displayValue.join('');
-						} else {
-							displayValue.push(' / ');
-							return display.textContent = displayValue.join('');
-						}
-				};
+				buttonDivisionFunctionality();
+				break;
 			case 'NumpadDecimal':
-				if (displayValue.length == 0) {
-					return display.textContent = displayValue;
-				} else if (displayValue.join('').split(' ')[2] == '') {
-					console.log(1);
-					return display.textContent = displayValue.join('');
-				} else if (displayValue.join('').split(' ').length == 1) {
-					if (displayValue.join('').includes('.')) {
-						console.log(2);
-						return display.textContent = displayValue.join('');
-					} else {
-						displayValue.push('.');
-						console.log(3);
-						console.log(displayValue);
-						return display.textContent = displayValue.join('');
-					};
-				} else {
-					let slicedDisplayValue = displayValue.slice(2);
-					if (slicedDisplayValue.join('').includes('.')) {
-							console.log(4);
-							return display.textContent = displayValue.join('');
-					} else {
-						displayValue.push('.');
-						console.log(5);
-						console.log(displayValue);
-						return display.textContent = displayValue.join('');
-					};
-				};
+				buttonFloatingFunctionality();
+				break;
 			case 'NumpadEnter':
-				if (displayValue.join('').split(' ')[2] == '') {
-					return display.textContent = displayValue.join('');
-				} else if (displayValue.join('').split(' ').length == 1) {
-					return display.textContent = displayValue.join('');
-				}
-				 else {
-					operate();
-				};
+				buttonEqualsFunctionality();
+				break;
 		};
-	}
+	};
 
 	// ENABLE OR DISABLE KEYBOARD SUPPORT
 	document.addEventListener('keydown', (n) => {
@@ -539,6 +390,7 @@ function initiateCalculator() {
 			};
 		}
 	});
+
 	showOnDisplay();
 };
 
