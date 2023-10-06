@@ -1,6 +1,8 @@
+
 function initiateCalculator() {
 
 			//CREATE DOM NODES
+
 			const display = document.querySelector('.display');
 			let displayValue = [];
 			let calculationValue = [];
@@ -104,77 +106,140 @@ function initiateCalculator() {
 			// }
 		};
   
+
+	// SHOW ON DISPLAY
+
 	function showOnDisplay() {
 
-		button0.addEventListener('click', () => {
+		//BUTTON FUNCTIONS
+
+		function button0Functionality() {
 			if (displayValue.length < 15) {
-			displayValue.push(0);
-			console.log(displayValue);
-			return display.textContent = displayValue.join('');
-			} else {
+				displayValue.push(0);
+				console.log(displayValue);
 				return display.textContent = displayValue.join('');
-			};
-		});
+				} else {
+					return display.textContent = displayValue.join('');
+				};
+		};
 
-		button1.addEventListener('click', () => {
-			displayValue.push(1);
-			console.log(displayValue);
-			return display.textContent = displayValue.join('');
-		});
+		button0.addEventListener('click', button0Functionality);
 
-		// button2.addEventListener('click', () => {
-		// 	const button2Value = '2';
-		// 	displayValue += button2Value;
-		// 	return display.textContent = displayValue;
-		// });
+		
+		function button1Functionality() {
+			if (displayValue.length < 15) {
+				displayValue.push(1);
+				console.log(displayValue);
+				return display.textContent = displayValue.join('');
+				}
+		};
 
-		button2.addEventListener('click', () => {
-			displayValue.push(2);
-			console.log(displayValue);
-			return display.textContent = displayValue.join('');
-		});
+		button1.addEventListener('click', button1Functionality);
 
-		button3.addEventListener('click', () => {
-			displayValue.push(3);
-			console.log(displayValue);
-			return display.textContent = displayValue.join('');
-		});
+		
+		function button2Functionality() {
+			if (displayValue.length < 15) {
+				displayValue.push(2);
+				console.log(displayValue);
+				return display.textContent = displayValue.join('');
+				}
+		};
 
-		button4.addEventListener('click', () => {
-			displayValue.push(4);
-			console.log(displayValue);
-			return display.textContent = displayValue.join('');
-		});
+		button2.addEventListener('click', button2Functionality);
+		
 
-		button5.addEventListener('click', () => {
-			displayValue.push(5);
-			console.log(displayValue);
-			return display.textContent = displayValue.join('');
-		});
+		function button3Functionality() {
+			if (displayValue.length < 15) {
+				displayValue.push(3);
+				console.log(displayValue);
+				return display.textContent = displayValue.join('');
+				}
+		};
 
-		button6.addEventListener('click', () => {
-			displayValue.push(6);
-			console.log(displayValue);
-			return display.textContent = displayValue.join('');
-		});
+		button3.addEventListener('click', button3Functionality);
 
-		button7.addEventListener('click', () => {
-			displayValue.push(7);
-			console.log(displayValue);
-			return display.textContent = displayValue.join('');
-		});
+		
+		function button4Functionality() {
+			if (displayValue.length < 15) {
+				displayValue.push(4);
+				console.log(displayValue);
+				return display.textContent = displayValue.join('');
+				}
+		};
 
-		button8.addEventListener('click', () => {
-			displayValue.push(8);
-			console.log(displayValue);
-			return display.textContent = displayValue.join('');
-		});
+		button4.addEventListener('click', button4Functionality);
 
-		button9.addEventListener('click', () => {
-			displayValue.push(9);
-			console.log(displayValue);
-			return display.textContent = displayValue.join('');
-		});
+		
+		function button5Functionality() {
+			if (displayValue.length < 15) {
+				displayValue.push(5);
+				console.log(displayValue);
+				return display.textContent = displayValue.join('');
+				}
+		};
+
+		button5.addEventListener('click', button5Functionality);
+
+		
+		function button6Functionality() {
+			if (displayValue.length < 15) {
+				displayValue.push(6);
+				console.log(displayValue);
+				return display.textContent = displayValue.join('');
+				}
+		};
+
+		button6.addEventListener('click', button6Functionality);
+		
+		function button7Functionality() {
+			if (displayValue.length < 15) {
+				displayValue.push(7);
+				console.log(displayValue);
+				return display.textContent = displayValue.join('');
+				}
+		};
+
+		button7.addEventListener('click', button7Functionality);
+		
+		function button8Functionality() {
+			if (displayValue.length < 15) {
+				displayValue.push(8);
+				console.log(displayValue);
+				return display.textContent = displayValue.join('');
+				}
+		};
+
+		button8.addEventListener('click', button8Functionality);
+		
+		function button9Functionality() {
+			if (displayValue.length < 15) {
+				displayValue.push(9);
+				console.log(displayValue);
+				return display.textContent = displayValue.join('');
+				}
+		};
+
+		button9.addEventListener('click', button9Functionality);
+
+		
+
+		
+
+		
+
+	
+
+		
+
+		
+
+		
+
+		
+
+		
+
+	
 
 		buttonAddition.addEventListener('click', () => {
 			if (displayValue.length == 0) {
@@ -460,10 +525,9 @@ function initiateCalculator() {
 		};
 	}
 
-	// ENABLE/ DISABLE KEYBOARD SUPPORT
+	// ENABLE OR DISABLE KEYBOARD SUPPORT
 	document.addEventListener('keydown', (n) => {
 		if (n.code === 'NumLock') {
-			
 			numLockCounter ++;
 			console.log(numLockCounter);
 			if (numLockCounter % 2 == 0) {
@@ -477,5 +541,20 @@ function initiateCalculator() {
 	});
 	showOnDisplay();
 };
+
+// TURN ON/OFF
+function powerOnOff() {
+	const powerButton = document.querySelector('.function_power');
+	let powerCounter = 2;
+	powerButton.addEventListener('click', () => {
+		powerCounter++;
+		if (powerCounter % 2 == 0) {
+			initiateCalculator();
+		} else {
+
+		}
+	})
+
+}
 
 initiateCalculator();
