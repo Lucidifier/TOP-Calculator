@@ -297,7 +297,7 @@ function initiateCalculator() {
 		};
 
 
-	// SHOW ON DISPLAY
+	// SHOW DISPLAY
 
 	function showOnDisplay() {
 		button0.addEventListener('click', button0Functionality);
@@ -319,6 +319,29 @@ function initiateCalculator() {
 		buttonClear.addEventListener('click', buttonClearFunctionality);
 		buttonEquals.addEventListener('click', buttonEqualsFunctionality);
   };
+
+	//HIDE DISPLAY
+
+	function hideOnDisplay() {
+		button0.removeEventListener('click', button0Functionality);
+		button1.removeEventListener('click', button1Functionality);
+		button2.removeEventListener('click', button2Functionality);
+		button3.removeEventListener('click', button3Functionality);
+		button4.removeEventListener('click', button4Functionality);
+		button5.removeEventListener('click', button5Functionality);
+		button6.removeEventListener('click', button6Functionality);
+		button7.removeEventListener('click', button7Functionality);
+		button8.removeEventListener('click', button8Functionality);
+		button9.removeEventListener('click', button9Functionality);
+		buttonAddition.removeEventListener('click', buttonAdditionFunctionality);
+		buttonSubtraction.removeEventListener('click', buttonSubtractionFunctionality);
+		buttonMultiplication.removeEventListener('click', buttonMultiplicationFunctionality);
+		buttonDivision.removeEventListener('click', buttonDivisionFunctionality);
+		buttonFloating.removeEventListener('click', buttonFloatingFunctionality);
+		buttonBackspace.removeEventListener('click', buttonBackspaceFunctionality);
+		buttonClear.removeEventListener('click', buttonClearFunctionality);
+		buttonEquals.removeEventListener('click', buttonEqualsFunctionality);
+	};
 
 
 	// KEYBOARD SUPPORT VALUES 
@@ -377,7 +400,8 @@ function initiateCalculator() {
 	};
 
 	// ENABLE OR DISABLE KEYBOARD SUPPORT
-	document.addEventListener('keydown', (n) => {
+
+	function keyboardSupport(n) {
 		if (n.code === 'NumLock') {
 			numLockCounter ++;
 			console.log(numLockCounter);
@@ -388,25 +412,35 @@ function initiateCalculator() {
 				document.addEventListener('keydown', keydownChecker);
 				console.log(2);
 			};
-		}
-	});
-
-	showOnDisplay();
-};
+		};
+	};
 
 // TURN ON/OFF
 function powerOnOff() {
+console.log('asd')
 	const powerButton = document.querySelector('.function_power');
-	let powerCounter = 2;
+	let powerCounter = 1;
 	powerButton.addEventListener('click', () => {
 		powerCounter++;
 		if (powerCounter % 2 == 0) {
-			initiateCalculator();
+			console.log(1);
+			showOnDisplay();
+			document.addEventListener('keydown', keyboardSupport);
 		} else {
 
-		}
-	})
+			console.log(2);
+			hideOnDisplay();
+			document.removeEventListener('keydown', keyboardSupport);
+			displayValue.splice(0,displayValue.length);
+			return display.textContent = displayValue.join('');
+		};
+	});
+};
 
-}
+powerOnOff();
+
+};
+
+
 
 initiateCalculator();
