@@ -427,10 +427,9 @@ console.log('asd')
 			showOnDisplay();
 			document.addEventListener('keydown', keyboardSupport);
 		} else {
-
 			console.log(2);
 			hideOnDisplay();
-			document.removeEventListener('keydown', keyboardSupport);
+			document.removeEventListener('keydown', keydownChecker);
 			displayValue.splice(0,displayValue.length);
 			return display.textContent = displayValue.join('');
 		};
@@ -440,7 +439,5 @@ console.log('asd')
 powerOnOff();
 
 };
-
-
 
 initiateCalculator();
