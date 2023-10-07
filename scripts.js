@@ -359,15 +359,16 @@ function initiateCalculator() {
 		buttonNumLock.removeEventListener('click', buttonNumLockFunctionality);
 	};
 
-	//PLAY AUDIO ON CLICK
+	//CONTROL AUDIO ON CLICK
+
+	function playBeep() {
+		audioBeep.currentTime = 0;
+		audioBeep.volume = 0.1;
+		audioBeep.playbackRate = 2;
+		audioBeep.play();
+	};
 
 	function playAudioOnClick() {
-		function playBeep() {
-			audioBeep.currentTime = 0;
-			audioBeep.volume = 0.1;
-			audioBeep.playbackRate = 2;
-			audioBeep.play();
-		}
 		button0.addEventListener('click', playBeep);
 		button1.addEventListener('click', playBeep);
 		button2.addEventListener('click', playBeep);
@@ -388,8 +389,6 @@ function initiateCalculator() {
 		buttonEquals.addEventListener('click', playBeep);
 		buttonNumLock.addEventListener('click', playBeep);
 	};
-
-	//DISABLE AUDIO ON CLICK
 
 	function disablePlayAudioOnClick() {
 		button0.removeEventListener('click', playBeep);
@@ -485,6 +484,22 @@ function initiateCalculator() {
 		};
 	};
 
+//SOUND FX ON/OFF
+
+function enableDisableSFX() {
+	console.log('sound');
+	const sfxButton = document.querySelector('.function_sfx');
+	let soundCounter = 1;
+	sfxButton.addEventListener('click', ()=> {
+		soundCounter++;
+		if (soundCounter % 2 == 0) {
+			playAudioOnClick();
+		}else {
+			disablePlayAudioOnClick();
+		};
+	});
+};
+
 // TURN ON/OFF
 function powerOnOff() {
 console.log('asd')
@@ -496,11 +511,12 @@ console.log('asd')
 			console.log(1);
 			showOnDisplay();
 			document.addEventListener('keydown', keyboardSupport);
-			playAudioOnClick();
+			enableDisableSFX();
 		} else {
 			console.log(2);
 			hideOnDisplay();
 			document.removeEventListener('keydown', keydownChecker);
+			disablePlayAudioOnClick();
 			displayValue.splice(0,displayValue.length);
 			return display.textContent = displayValue.join('');
 		};
