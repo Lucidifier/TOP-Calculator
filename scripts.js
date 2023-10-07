@@ -29,6 +29,7 @@ function initiateCalculator() {
 			const buttonMultiplication = document.querySelector('.key_multiplication');
 			const buttonDivision = document.querySelector('.key_division');
 			const buttonEquals = document.querySelector('.key_equals');
+			const buttonNumLock = document.querySelector('.key_NMLK');
 
 
 	
@@ -296,6 +297,18 @@ function initiateCalculator() {
 			};
 		};
 
+		function buttonNumLockFunctionality() {
+			numLockCounter ++;
+			console.log(numLockCounter);
+			if (numLockCounter % 2 == 0) {
+				document. removeEventListener ('keydown', keydownChecker);
+				console.log(1);
+			} else {
+				document.addEventListener('keydown', keydownChecker);
+				console.log(2);
+			};
+		}
+
 
 	// SHOW DISPLAY
 
@@ -318,6 +331,7 @@ function initiateCalculator() {
 		buttonBackspace.addEventListener('click', buttonBackspaceFunctionality);
 		buttonClear.addEventListener('click', buttonClearFunctionality);
 		buttonEquals.addEventListener('click', buttonEqualsFunctionality);
+		buttonNumLock.addEventListener('click', buttonNumLockFunctionality);
   };
 
 	//HIDE DISPLAY
@@ -341,6 +355,7 @@ function initiateCalculator() {
 		buttonBackspace.removeEventListener('click', buttonBackspaceFunctionality);
 		buttonClear.removeEventListener('click', buttonClearFunctionality);
 		buttonEquals.removeEventListener('click', buttonEqualsFunctionality);
+		buttonNumLock.removeEventListener('click', buttonNumLockFunctionality);
 	};
 
 
