@@ -4,6 +4,7 @@ function initiateCalculator() {
 			//CREATE DOM NODES
 
 			const display = document.querySelector('.display');
+			const audioBeep = new Audio('sounds/beep.mp3');
 			let displayValue = [];
 			let calculationValue = [];
 			let separatedDisplayValue = [];
@@ -358,6 +359,60 @@ function initiateCalculator() {
 		buttonNumLock.removeEventListener('click', buttonNumLockFunctionality);
 	};
 
+	//PLAY AUDIO ON CLICK
+
+	function playAudioOnClick() {
+		function playBeep() {
+			audioBeep.currentTime = 0;
+			audioBeep.volume = 0.1;
+			audioBeep.playbackRate = 2;
+			audioBeep.play();
+		}
+		button0.addEventListener('click', playBeep);
+		button1.addEventListener('click', playBeep);
+		button2.addEventListener('click', playBeep);
+		button3.addEventListener('click', playBeep);
+		button4.addEventListener('click', playBeep);
+		button5.addEventListener('click', playBeep);
+		button6.addEventListener('click', playBeep);
+		button7.addEventListener('click', playBeep);
+		button8.addEventListener('click', playBeep);
+		button9.addEventListener('click', playBeep);
+		buttonAddition.addEventListener('click', playBeep);
+		buttonSubtraction.addEventListener('click', playBeep);
+		buttonMultiplication.addEventListener('click', playBeep);
+		buttonDivision.addEventListener('click', playBeep);
+		buttonFloating.addEventListener('click', playBeep);
+		buttonBackspace.addEventListener('click', playBeep);
+		buttonClear.addEventListener('click', playBeep);
+		buttonEquals.addEventListener('click', playBeep);
+		buttonNumLock.addEventListener('click', playBeep);
+	};
+
+	//DISABLE AUDIO ON CLICK
+
+	function disablePlayAudioOnClick() {
+		button0.removeEventListener('click', playBeep);
+		button1.removeEventListener('click', playBeep);
+		button2.removeEventListener('click', playBeep);
+		button3.removeEventListener('click', playBeep);
+		button4.removeEventListener('click', playBeep);
+		button5.removeEventListener('click', playBeep);
+		button6.removeEventListener('click', playBeep);
+		button7.removeEventListener('click', playBeep);
+		button8.removeEventListener('click', playBeep);
+		button9.removeEventListener('click', playBeep);
+		buttonAddition.removeEventListener('click', playBeep);
+		buttonSubtraction.removeEventListener('click', playBeep);
+		buttonMultiplication.removeEventListener('click', playBeep);
+		buttonDivision.removeEventListener('click', playBeep);
+		buttonFloating.removeEventListener('click', playBeep);
+		buttonBackspace.removeEventListener('click', playBeep);
+		buttonClear.removeEventListener('click', playBeep);
+		buttonEquals.removeEventListener('click', playBeep);
+		buttonNumLock.removeEventListener('click', playBeep);
+	};
+
 
 	// KEYBOARD SUPPORT VALUES 
 
@@ -441,6 +496,7 @@ console.log('asd')
 			console.log(1);
 			showOnDisplay();
 			document.addEventListener('keydown', keyboardSupport);
+			playAudioOnClick();
 		} else {
 			console.log(2);
 			hideOnDisplay();
