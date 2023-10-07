@@ -32,6 +32,10 @@ function initiateCalculator() {
 			const buttonEquals = document.querySelector('.key_equals');
 			const buttonNumLock = document.querySelector('.key_NMLK');
 
+			const buttonSFX = document.querySelector('.function_sfx');
+			const buttonLights = document.querySelector('.function_lights');
+			const buttonPower = document.querySelector('.function_power');
+
 
 	
 		// 	let buttonVariedVariables = [
@@ -488,9 +492,9 @@ function initiateCalculator() {
 
 function enableDisableSFX() {
 	console.log('sound');
-	const sfxButton = document.querySelector('.function_sfx');
+	
 	let soundCounter = 1;
-	sfxButton.addEventListener('click', ()=> {
+	buttonSFX.addEventListener('click', ()=> {
 		soundCounter++;
 		if (soundCounter % 2 == 0) {
 			playAudioOnClick();
@@ -500,23 +504,94 @@ function enableDisableSFX() {
 	});
 };
 
+//LIGHTS CONTROL
+
+function lightsOn() {
+	display.classList.add('display_lights');
+	button0.classList.add('keys_lights');
+	button1.classList.add('keys_lights');
+	button2.classList.add('keys_lights');
+	button3.classList.add('keys_lights');
+	button4.classList.add('keys_lights');
+	button5.classList.add('keys_lights');
+	button6.classList.add('keys_lights');
+	button7.classList.add('keys_lights');
+	button8.classList.add('keys_lights');
+	button9.classList.add('keys_lights');
+	buttonAddition.classList.add('keys_lights');
+	buttonSubtraction.classList.add('keys_lights');
+	buttonMultiplication.classList.add('keys_lights');
+	buttonDivision.classList.add('keys_lights');
+	buttonFloating.classList.add('keys_lights');
+	buttonBackspace.classList.add('keys_lights');
+	buttonClear.classList.add('keys_lights');
+	buttonEquals.classList.add('keys_lights');
+	buttonNumLock.classList.add('keys_lights');
+	buttonSFX.classList.add('keys_lights');
+	buttonLights.classList.add('keys_lights');
+	buttonPower.classList.add('keys_lights');
+	console.log('let there be light');
+};
+
+function lightsOff() {
+	display.classList.remove('display_lights');
+	button0.classList.remove('keys_lights');
+	button1.classList.remove('keys_lights');
+	button2.classList.remove('keys_lights');
+	button3.classList.remove('keys_lights');
+	button4.classList.remove('keys_lights');
+	button5.classList.remove('keys_lights');
+	button6.classList.remove('keys_lights');
+	button7.classList.remove('keys_lights');
+	button8.classList.remove('keys_lights');
+	button9.classList.remove('keys_lights');
+	buttonAddition.classList.remove('keys_lights');
+	buttonSubtraction.classList.remove('keys_lights');
+	buttonMultiplication.classList.remove('keys_lights');
+	buttonDivision.classList.remove('keys_lights');
+	buttonFloating.classList.remove('keys_lights');
+	buttonBackspace.classList.remove('keys_lights');
+	buttonClear.classList.remove('keys_lights');
+	buttonEquals.classList.remove('keys_lights');
+	buttonNumLock.classList.remove('keys_lights');
+	buttonSFX.classList.remove('keys_lights');
+	buttonLights.classList.remove('keys_lights');
+	buttonPower.classList.remove('keys_lights');
+	console.log('let there be NO light');
+};
+
+function lightsControl() {
+	console.log('light');
+	let lightCounter = 1;
+	buttonLights.addEventListener('click', ()=> {
+		lightCounter++;
+		if (lightCounter % 2 == 0) {
+			lightsOn();
+		}else {
+			lightsOff();
+		};
+	});
+};
+
 // TURN ON/OFF
 function powerOnOff() {
 console.log('asd')
-	const powerButton = document.querySelector('.function_power');
+	
 	let powerCounter = 1;
-	powerButton.addEventListener('click', () => {
+	buttonPower.addEventListener('click', () => {
 		powerCounter++;
 		if (powerCounter % 2 == 0) {
 			console.log(1);
 			showOnDisplay();
 			document.addEventListener('keydown', keyboardSupport);
 			enableDisableSFX();
+			lightsControl();
 		} else {
 			console.log(2);
 			hideOnDisplay();
 			document.removeEventListener('keydown', keydownChecker);
 			disablePlayAudioOnClick();
+			lightsOff();
 			displayValue.splice(0,displayValue.length);
 			return display.textContent = displayValue.join('');
 		};
