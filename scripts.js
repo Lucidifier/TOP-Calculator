@@ -1,318 +1,296 @@
-
 function initiateCalculator() {
 
-			//CREATE DOM NODES
+	let displayValue = [];
+	let calculationValue = [];
+	let separatedDisplayValue = [];
+	let numLockCounter = 2;
 
-			const display = document.querySelector('.display');
-			const audioBeep = new Audio('sounds/beep.mp3');
-			let displayValue = [];
-			let calculationValue = [];
-			let separatedDisplayValue = [];
-			let numLockCounter = 2;
+	//CREATE DOM NODES
+
+	const display = document.querySelector('.display');
 		
-			const button0 = document.querySelector('.key_0');
-			const button1 = document.querySelector('.key_1');
-			const button2 = document.querySelector('.key_2');
-			const button3 = document.querySelector('.key_3');
-			const button4 = document.querySelector('.key_4');
-			const button5 = document.querySelector('.key_5');
-			const button6 = document.querySelector('.key_6');
-			const button7 = document.querySelector('.key_7');
-			const button8 = document.querySelector('.key_8');
-			const button9 = document.querySelector('.key_9');
+	const button0 = document.querySelector('.key_0');
+	const button1 = document.querySelector('.key_1');
+	const button2 = document.querySelector('.key_2');
+	const button3 = document.querySelector('.key_3');
+	const button4 = document.querySelector('.key_4');
+	const button5 = document.querySelector('.key_5');
+	const button6 = document.querySelector('.key_6');
+	const button7 = document.querySelector('.key_7');
+	const button8 = document.querySelector('.key_8');
+	const button9 = document.querySelector('.key_9');
 	
-			const buttonBackspace = document.querySelector('.key_backspace');
-			const buttonClear = document.querySelector('.key_clear');
-			const buttonFloating = document.querySelector('.key_floating');
+	const buttonBackspace = document.querySelector('.key_backspace');
+	const buttonClear = document.querySelector('.key_clear');
+	const buttonFloating = document.querySelector('.key_floating');
 	
-			const buttonAddition = document.querySelector('.key_addition');
-			const buttonSubtraction = document.querySelector('.key_substraction');
-			const buttonMultiplication = document.querySelector('.key_multiplication');
-			const buttonDivision = document.querySelector('.key_division');
-			const buttonEquals = document.querySelector('.key_equals');
-			const buttonNumLock = document.querySelector('.key_NMLK');
+	const buttonAddition = document.querySelector('.key_addition');
+	const buttonSubtraction = document.querySelector('.key_substraction');
+	const buttonMultiplication = document.querySelector('.key_multiplication');
+	const buttonDivision = document.querySelector('.key_division');
+	const buttonEquals = document.querySelector('.key_equals');
+	const buttonNumLock = document.querySelector('.key_NMLK');
 
-			const buttonSFX = document.querySelector('.function_sfx');
-			const buttonLights = document.querySelector('.function_lights');
-			const buttonPower = document.querySelector('.function_power');
+	const buttonSFX = document.querySelector('.function_sfx');
+	const buttonLights = document.querySelector('.function_lights');
+	const buttonPower = document.querySelector('.function_power');
 
-
+	const audioBeep = new Audio('sounds/beep.mp3');
 	
-		// 	let buttonVariedVariables = [
-		// 		button0,
-		// 		button1,
-		// 		button2,
-		// 		button3,
-		// 		button4,
-		// 		button5,
-		// 		button6,
-		// 		button7,
-		// 		button8,
-		// 		button9,
-		// ];
+	// 	let buttonVariedVariables = [
+	// 		button0,
+	// 		button1,
+	// 		button2,
+	// 		button3,
+	// 		button4,
+	// 		button5,
+	// 		button6,
+	// 		button7,
+	// 		button8,
+	// 		button9,
+	// ];
 	
-	
-		// 	let i = 0;
-		// 	for (elem in buttonVariedVariables) {
-		// 		buttonVariedVariables[elem].addEventListener('click', () => {
-		// 			console.log(displayValue);
-		// 			displayValue.push(buttonVariedVariables.indexOf());
-		// 			console.log(displayValue);
-		// 			return display.textContent = displayValue.join('');
-		// 		});
-		// 	}
+	// 	let i = 0;
+	// 	for (elem in buttonVariedVariables) {
+	// 		buttonVariedVariables[elem].addEventListener('click', () => {
+	// 			console.log(displayValue);
+	// 			displayValue.push(buttonVariedVariables.indexOf());
+	// 			console.log(displayValue);
+	// 			return display.textContent = displayValue.join('');
+	// 		});
+	// 	}
 
-
-		function operate() {
-			separatedDisplayValue = displayValue.join('').split(' ');
-			switch (separatedDisplayValue[1]) {
-				case '+':
-					calculationValue = +separatedDisplayValue[0] + +separatedDisplayValue[2];
-					display.textContent = calculationValue;
+	function operate() {
+		separatedDisplayValue = displayValue.join('').split(' ');
+		switch (separatedDisplayValue[1]) {
+			case '+':
+				calculationValue = +separatedDisplayValue[0] + +separatedDisplayValue[2];
+				display.textContent = calculationValue;
+				break;
+			case '-':
+				calculationValue = +separatedDisplayValue[0] - +separatedDisplayValue[2];
+				display.textContent = calculationValue;
+				break;
+			case '*':
+				if ((separatedDisplayValue[0] === '' || separatedDisplayValue[2] === '') || (isNaN(separatedDisplayValue[0]) || isNaN(separatedDisplayValue[2]))) {
+					calculationValue = separatedDisplayValue[0];
+					displayValue.splice(0,displayValue.length);
+					display.textContent = displayValue.join('');
 					break;
-				case '-':
-					calculationValue = +separatedDisplayValue[0] - +separatedDisplayValue[2];
-					display.textContent = calculationValue;
-					break;
-				case '*':
-					if ((separatedDisplayValue[0] === '' || separatedDisplayValue[2] === '') || (isNaN(separatedDisplayValue[0]) || isNaN(separatedDisplayValue[2]))) {
-						calculationValue = separatedDisplayValue[0];
-						displayValue.splice(0,displayValue.length);
-						display.textContent = displayValue.join('');
-						break;
-					} else {
+				} else {
 					calculationValue = +separatedDisplayValue[0] * +separatedDisplayValue[2];
 					display.textContent = calculationValue;
 					break;
-					};
-				case '/':
-					if (separatedDisplayValue[0] === '' || separatedDisplayValue[2] === '') {
-						calculationValue = separatedDisplayValue[0];
+				};
+			case '/':
+				if (separatedDisplayValue[0] === '' || separatedDisplayValue[2] === '') {
+					calculationValue = separatedDisplayValue[0];
+					displayValue.splice(0,displayValue.length);
+					display.textContent = displayValue.join('');
+					break;
+				} else {
+					if (+separatedDisplayValue[2] == 0) {
 						displayValue.splice(0,displayValue.length);
-						console.log(displayValue);
 						display.textContent = displayValue.join('');
 						break;
 					} else {
-						if (+separatedDisplayValue[2] == 0) {
-							displayValue.splice(0,displayValue.length);
-							console.log(displayValue);
-							display.textContent = displayValue.join('');
-							break;
-						} else {
 						calculationValue = +separatedDisplayValue[0] / +separatedDisplayValue[2];
-						console.log(calculationValue);
 						display.textContent = calculationValue;
 						break;
 						}};
-				default:
-					console.log('error');
-			};
-		};
+			default:
+				console.log('error');
+		}};
 
+	//BUTTON FUNCTIONS
 
-		//BUTTON FUNCTIONS
-
-		function button0Functionality() {
-			if (displayValue.length < 15) {
-				displayValue.push(0);
-				console.log(displayValue);
-				return display.textContent = displayValue.join('');
-				} else {
-					return display.textContent = displayValue.join('');
-				};
-		};
-
-		function button1Functionality() {
-			if (displayValue.length < 15) {
-				displayValue.push(1);
-				console.log(displayValue);
-				return display.textContent = displayValue.join('');
-				}
-		};
-  
-		function button2Functionality() {
-			if (displayValue.length < 15) {
-				displayValue.push(2);
-				console.log(displayValue);
-				return display.textContent = displayValue.join('');
-				}
-		};
-
-		function button3Functionality() {
-			if (displayValue.length < 15) {
-				displayValue.push(3);
-				console.log(displayValue);
-				return display.textContent = displayValue.join('');
-				}
-		};
-
-		function button4Functionality() {
-			if (displayValue.length < 15) {
-				displayValue.push(4);
-				console.log(displayValue);
-				return display.textContent = displayValue.join('');
-				}
-		};
-
-		function button5Functionality() {
-			if (displayValue.length < 15) {
-				displayValue.push(5);
-				console.log(displayValue);
-				return display.textContent = displayValue.join('');
-				}
-		};
-
-		function button6Functionality() {
-			if (displayValue.length < 15) {
-				displayValue.push(6);
-				console.log(displayValue);
-				return display.textContent = displayValue.join('');
-				}
-		};
-
-		function button7Functionality() {
-			if (displayValue.length < 15) {
-				displayValue.push(7);
-				console.log(displayValue);
-				return display.textContent = displayValue.join('');
-				}
-		};
-
-		function button8Functionality() {
-			if (displayValue.length < 15) {
-				displayValue.push(8);
-				console.log(displayValue);
-				return display.textContent = displayValue.join('');
-				}
-		};
-
-		function button9Functionality() {
-			if (displayValue.length < 15) {
-				displayValue.push(9);
-				console.log(displayValue);
-				return display.textContent = displayValue.join('');
-				}
-		};
-
-		function buttonAdditionFunctionality() {
-			if (displayValue.length == 0) {
-				return display.textContent = displayValue;
-			} else {
-			if (displayValue.join('').split(' ')[1] !== undefined) {
-				operate();
-				displayValue.splice(0,displayValue.length,calculationValue, ' + ');
+	function button0Functionality() {
+		if (displayValue.length < 20) {
+			displayValue.push(0);
 			return display.textContent = displayValue.join('');
-			} else {
-			displayValue.push(' + ');
-			return display.textContent = displayValue.join('');
-			};
-		};
-		};
-
-		function buttonSubtractionFunctionality() {
-			if (displayValue.join('').split(' ')[1] !== undefined) {
-				operate();
-				displayValue.splice(0,displayValue.length,calculationValue, ' - ');
-			return display.textContent = displayValue.join('');
-			} else {
-			displayValue.push(' - ');
-			return display.textContent = displayValue.join('');
-			};
-		};
-
-		function buttonMultiplicationFunctionality() {
-			if (displayValue.length == 0) {
-				return display.textContent = displayValue;
-			} else {
-				if (displayValue.join('').split(' ')[1] !== undefined) {
-					operate();
-					displayValue.splice(0,displayValue.length,calculationValue, ' * ');
-					return display.textContent = displayValue.join('');
-				} else {
-					displayValue.push(' * ');
-					return display.textContent = displayValue.join('');
-				};
-			};
-		};
-
-		function buttonDivisionFunctionality() {
-			if (displayValue.length == 0) {
-				return display.textContent = displayValue;
-			} else {
-					if (displayValue.join('').split(' ')[1] !== undefined) {
-						operate();
-						displayValue.splice(0,displayValue.length,calculationValue, ' / ');
-						return display.textContent = displayValue.join('');
-					} else {
-						displayValue.push(' / ');
-						return display.textContent = displayValue.join('');
-					}
-			};
-		};
-
-		function buttonFloatingFunctionality() {
-			console.log(displayValue.join('').split(' '));
-			if (displayValue.length == 0) {
-				return display.textContent = displayValue;
-			} else if (displayValue.join('').split(' ')[2] == '') {
-				console.log(1);
-				return display.textContent = displayValue.join('');
-			} else if (displayValue.join('').split(' ').length == 1) {
-				if (displayValue.join('').includes('.')) {
-					console.log(2);
-					return display.textContent = displayValue.join('');
-				} else {
-					displayValue.push('.');
-					console.log(3);
-					console.log(displayValue);
-					return display.textContent = displayValue.join('');
-				};
-			} else {
-				let slicedDisplayValue = displayValue.slice(2);
-				if (slicedDisplayValue.join('').includes('.')) {
-						console.log(4);
-						return display.textContent = displayValue.join('');
-				} else {
-					displayValue.push('.');
-					console.log(5);
-					console.log(displayValue);
-					return display.textContent = displayValue.join('');
-				};
-			};
-		};
-
-		function buttonBackspaceFunctionality() {
-			displayValue.pop();
-			return display.textContent = displayValue.join('');
-		};
-
-		function buttonClearFunctionality() {
+		} else {
 			displayValue.splice(0,displayValue.length);
 			return display.textContent = displayValue.join('');
-		};
+		}};
 
-		function buttonEqualsFunctionality() {
-			if (displayValue.join('').split(' ')[2] == '') {
-				return display.textContent = displayValue.join('');
-			} else if (displayValue.join('').split(' ').length == 1) {
-				return display.textContent = displayValue.join('');
-			}
-			 else {
+	function button1Functionality() {
+		if (displayValue.length < 20) {
+			displayValue.push(1);
+			return display.textContent = displayValue.join('');
+		} else {
+			displayValue.splice(0,displayValue.length);
+			return display.textContent = displayValue.join('');
+		}};
+  
+	function button2Functionality() {
+		if (displayValue.length < 20) {
+			displayValue.push(2);
+			return display.textContent = displayValue.join('');
+		} else {
+			displayValue.splice(0,displayValue.length);
+			return display.textContent = displayValue.join('');
+		}};
+
+	function button3Functionality() {
+		if (displayValue.length < 20) {
+			displayValue.push(3);
+			return display.textContent = displayValue.join('');
+		} else {
+			displayValue.splice(0,displayValue.length);
+			return display.textContent = displayValue.join('');
+		}};
+
+	function button4Functionality() {
+		if (displayValue.length < 20) {
+			displayValue.push(4);
+			return display.textContent = displayValue.join('');
+		} else {
+			displayValue.splice(0,displayValue.length);
+			return display.textContent = displayValue.join('');
+		}};
+
+	function button5Functionality() {
+		if (displayValue.length < 20) {
+			displayValue.push(5);
+			return display.textContent = displayValue.join('');
+		} else {
+			displayValue.splice(0,displayValue.length);
+			return display.textContent = displayValue.join('');
+		}};
+
+	function button6Functionality() {
+		if (displayValue.length < 20) {
+			displayValue.push(6);
+			return display.textContent = displayValue.join('');
+		} else {
+			displayValue.splice(0,displayValue.length);
+			return display.textContent = displayValue.join('');
+		}};
+
+	function button7Functionality() {
+		if (displayValue.length < 20) {
+			displayValue.push(7);
+			return display.textContent = displayValue.join('');
+		} else {
+			displayValue.splice(0,displayValue.length);
+			return display.textContent = displayValue.join('');
+		}};
+
+	function button8Functionality() {
+		if (displayValue.length < 20) {
+			displayValue.push(8);
+			return display.textContent = displayValue.join('');
+		} else {
+			displayValue.splice(0,displayValue.length);
+			return display.textContent = displayValue.join('');
+		}};
+
+	function button9Functionality() {
+		if (displayValue.length < 20) {
+			displayValue.push(9);
+			return display.textContent = displayValue.join('');
+		} else {
+			displayValue.splice(0,displayValue.length);
+			return display.textContent = displayValue.join('');
+		}};
+
+	function buttonAdditionFunctionality() {
+		if (displayValue.length == 0) {
+			return display.textContent = displayValue;
+		} else {
+				if (displayValue.join('').split(' ')[1] !== undefined) {
+					operate();
+					displayValue.splice(0,displayValue.length,calculationValue, ' + ');
+					return display.textContent = displayValue.join('');
+				} else {
+					displayValue.push(' + ');
+					return display.textContent = displayValue.join('');
+				}}};
+
+	function buttonSubtractionFunctionality() {
+		if (displayValue.join('').split(' ')[1] !== undefined) {
+			operate();
+			displayValue.splice(0,displayValue.length,calculationValue, ' - ');
+			return display.textContent = displayValue.join('');
+		} else {
+			displayValue.push(' - ');
+			return display.textContent = displayValue.join('');
+			}};
+
+	function buttonMultiplicationFunctionality() {
+		if (displayValue.length == 0) {
+			return display.textContent = displayValue;
+		} else {
+			if (displayValue.join('').split(' ')[1] !== undefined) {
 				operate();
-			};
-		};
-
-		function buttonNumLockFunctionality() {
-			numLockCounter ++;
-			console.log(numLockCounter);
-			if (numLockCounter % 2 == 0) {
-				document. removeEventListener ('keydown', keydownChecker);
-				console.log(1);
+				displayValue.splice(0,displayValue.length,calculationValue, ' * ');
+				return display.textContent = displayValue.join('');
 			} else {
-				document.addEventListener('keydown', keydownChecker);
-				console.log(2);
+				displayValue.push(' * ');
+				return display.textContent = displayValue.join('');
+			}}};
+
+	function buttonDivisionFunctionality() {
+		if (displayValue.length == 0) {
+			return display.textContent = displayValue;
+		} else {
+				if (displayValue.join('').split(' ')[1] !== undefined) {
+					operate();
+					displayValue.splice(0,displayValue.length,calculationValue, ' / ');
+					return display.textContent = displayValue.join('');
+				} else {
+					displayValue.push(' / ');
+					return display.textContent = displayValue.join('');
+				}}};
+
+	function buttonFloatingFunctionality() {
+		if (displayValue.length == 0) {
+			return display.textContent = displayValue;
+		} else if (displayValue.join('').split(' ')[2] == '') {
+			return display.textContent = displayValue.join('');
+		} else if (displayValue.join('').split(' ').length == 1) {
+			if (displayValue.join('').includes('.')) {
+				return display.textContent = displayValue.join('');
+			} else {
+				displayValue.push('.');
+				return display.textContent = displayValue.join('');
 			};
+		} else {
+			let slicedDisplayValue = displayValue.slice(2);
+			if (slicedDisplayValue.join('').includes('.')) {
+				return display.textContent = displayValue.join('');
+			} else {
+				displayValue.push('.');
+				return display.textContent = displayValue.join('');
+			}}};
+
+	function buttonBackspaceFunctionality() {
+		displayValue.pop();
+		return display.textContent = displayValue.join('');
+	};
+
+	function buttonClearFunctionality() {
+		displayValue.splice(0,displayValue.length);
+		return display.textContent = displayValue.join('');
+	};
+
+	function buttonEqualsFunctionality() {
+		if (displayValue.join('').split(' ')[2] == '') {
+			return display.textContent = displayValue.join('');
+		} else if (displayValue.join('').split(' ').length == 1) {
+			return display.textContent = displayValue.join('');
 		}
+		else {
+			operate();
+		}};
+
+	function buttonNumLockFunctionality() {
+		numLockCounter++;
+		if (numLockCounter % 2 == 0) {
+			document. removeEventListener ('keydown', keydownChecker);
+		} else {
+			document.addEventListener('keydown', keydownChecker);
+		}};
 
 
 	// SHOW DISPLAY
@@ -363,7 +341,7 @@ function initiateCalculator() {
 		buttonNumLock.removeEventListener('click', buttonNumLockFunctionality);
 	};
 
-	//CONTROL AUDIO ON CLICK
+	//CONTROL AUDIO ON CLICKS
 
 	function playBeep() {
 		audioBeep.currentTime = 0;
@@ -469,136 +447,118 @@ function initiateCalculator() {
 			case 'NumpadEnter':
 				buttonEqualsFunctionality();
 				break;
-		};
-	};
+		}};
 
 	// ENABLE OR DISABLE KEYBOARD SUPPORT
 
 	function keyboardSupport(n) {
 		if (n.code === 'NumLock') {
-			numLockCounter ++;
-			console.log(numLockCounter);
+			numLockCounter++;
 			if (numLockCounter % 2 == 0) {
 				document. removeEventListener ('keydown', keydownChecker);
-				console.log(1);
 			} else {
 				document.addEventListener('keydown', keydownChecker);
-				console.log(2);
-			};
-		};
+			}}};
+
+	//SOUND FX ON/OFF
+
+	function enableDisableSFX() {
+		let soundCounter = 1;
+		buttonSFX.addEventListener('click', ()=> {
+			soundCounter++;
+			if (soundCounter % 2 == 0) {
+				playAudioOnClick();
+			}else {
+				disablePlayAudioOnClick();
+			}});
 	};
 
-//SOUND FX ON/OFF
+	//LIGHTS CONTROL
 
-function enableDisableSFX() {
-	console.log('sound');
-	
-	let soundCounter = 1;
-	buttonSFX.addEventListener('click', ()=> {
-		soundCounter++;
-		if (soundCounter % 2 == 0) {
-			playAudioOnClick();
-		}else {
-			disablePlayAudioOnClick();
-		};
-	});
-};
+	function lightsOn() {
+		display.classList.add('display_lights');
+		button0.classList.add('keys_lights');
+		button1.classList.add('keys_lights');
+		button2.classList.add('keys_lights');
+		button3.classList.add('keys_lights');
+		button4.classList.add('keys_lights');
+		button5.classList.add('keys_lights');
+		button6.classList.add('keys_lights');
+		button7.classList.add('keys_lights');
+		button8.classList.add('keys_lights');
+		button9.classList.add('keys_lights');
+		buttonAddition.classList.add('keys_lights');
+		buttonSubtraction.classList.add('keys_lights');
+		buttonMultiplication.classList.add('keys_lights');
+		buttonDivision.classList.add('keys_lights');
+		buttonFloating.classList.add('keys_lights');
+		buttonBackspace.classList.add('keys_lights');
+		buttonClear.classList.add('keys_lights');
+		buttonEquals.classList.add('keys_lights');
+		buttonNumLock.classList.add('keys_lights');
+		buttonSFX.classList.add('keys_lights');
+		buttonLights.classList.add('keys_lights');
+		buttonPower.classList.add('keys_lights');
+	};
 
-//LIGHTS CONTROL
+	function lightsOff() {
+		display.classList.remove('display_lights');
+		button0.classList.remove('keys_lights');
+		button1.classList.remove('keys_lights');
+		button2.classList.remove('keys_lights');
+		button3.classList.remove('keys_lights');
+		button4.classList.remove('keys_lights');
+		button5.classList.remove('keys_lights');
+		button6.classList.remove('keys_lights');
+		button7.classList.remove('keys_lights');
+		button8.classList.remove('keys_lights');
+		button9.classList.remove('keys_lights');
+		buttonAddition.classList.remove('keys_lights');
+		buttonSubtraction.classList.remove('keys_lights');
+		buttonMultiplication.classList.remove('keys_lights');
+		buttonDivision.classList.remove('keys_lights');
+		buttonFloating.classList.remove('keys_lights');
+		buttonBackspace.classList.remove('keys_lights');
+		buttonClear.classList.remove('keys_lights');
+		buttonEquals.classList.remove('keys_lights');
+		buttonNumLock.classList.remove('keys_lights');
+		buttonSFX.classList.remove('keys_lights');
+		buttonLights.classList.remove('keys_lights');
+		buttonPower.classList.remove('keys_lights');
+	};
 
-function lightsOn() {
-	display.classList.add('display_lights');
-	button0.classList.add('keys_lights');
-	button1.classList.add('keys_lights');
-	button2.classList.add('keys_lights');
-	button3.classList.add('keys_lights');
-	button4.classList.add('keys_lights');
-	button5.classList.add('keys_lights');
-	button6.classList.add('keys_lights');
-	button7.classList.add('keys_lights');
-	button8.classList.add('keys_lights');
-	button9.classList.add('keys_lights');
-	buttonAddition.classList.add('keys_lights');
-	buttonSubtraction.classList.add('keys_lights');
-	buttonMultiplication.classList.add('keys_lights');
-	buttonDivision.classList.add('keys_lights');
-	buttonFloating.classList.add('keys_lights');
-	buttonBackspace.classList.add('keys_lights');
-	buttonClear.classList.add('keys_lights');
-	buttonEquals.classList.add('keys_lights');
-	buttonNumLock.classList.add('keys_lights');
-	buttonSFX.classList.add('keys_lights');
-	buttonLights.classList.add('keys_lights');
-	buttonPower.classList.add('keys_lights');
-	console.log('let there be light');
-};
-
-function lightsOff() {
-	display.classList.remove('display_lights');
-	button0.classList.remove('keys_lights');
-	button1.classList.remove('keys_lights');
-	button2.classList.remove('keys_lights');
-	button3.classList.remove('keys_lights');
-	button4.classList.remove('keys_lights');
-	button5.classList.remove('keys_lights');
-	button6.classList.remove('keys_lights');
-	button7.classList.remove('keys_lights');
-	button8.classList.remove('keys_lights');
-	button9.classList.remove('keys_lights');
-	buttonAddition.classList.remove('keys_lights');
-	buttonSubtraction.classList.remove('keys_lights');
-	buttonMultiplication.classList.remove('keys_lights');
-	buttonDivision.classList.remove('keys_lights');
-	buttonFloating.classList.remove('keys_lights');
-	buttonBackspace.classList.remove('keys_lights');
-	buttonClear.classList.remove('keys_lights');
-	buttonEquals.classList.remove('keys_lights');
-	buttonNumLock.classList.remove('keys_lights');
-	buttonSFX.classList.remove('keys_lights');
-	buttonLights.classList.remove('keys_lights');
-	buttonPower.classList.remove('keys_lights');
-	console.log('let there be NO light');
-};
-
-function lightsControl() {
-	console.log('light');
-	let lightCounter = 1;
-	buttonLights.addEventListener('click', ()=> {
+	function lightsControl() {
+		let lightCounter = 1;
+		buttonLights.addEventListener('click', ()=> {
 		lightCounter++;
-		if (lightCounter % 2 == 0) {
-			lightsOn();
-		}else {
-			lightsOff();
-		};
-	});
-};
+			if (lightCounter % 2 == 0) {
+				lightsOn();
+			}else {
+				lightsOff();
+			}});
+	};
 
-// TURN ON/OFF
-function powerOnOff() {
-console.log('asd')
-	
+	// TURN ON/OFF
+	function powerOnOff() {
 	let powerCounter = 1;
 	buttonPower.addEventListener('click', () => {
 		powerCounter++;
 		if (powerCounter % 2 == 0) {
-			console.log(1);
 			showOnDisplay();
 			document.addEventListener('keydown', keyboardSupport);
 			enableDisableSFX();
 			lightsControl();
 		} else {
-			console.log(2);
 			hideOnDisplay();
 			document.removeEventListener('keydown', keydownChecker);
 			disablePlayAudioOnClick();
 			lightsOff();
 			displayValue.splice(0,displayValue.length);
 			return display.textContent = displayValue.join('');
-		};
-	});
+		}});
 };
 
-powerOnOff();
+	powerOnOff();
 
 };
 
